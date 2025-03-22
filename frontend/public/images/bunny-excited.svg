@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Bunny body -->
+  <ellipse cx="100" cy="110" rx="40" ry="35" fill="#f2e6ff" />
+  
+  <!-- Bunny head -->
+  <circle cx="100" cy="70" r="35" fill="#f2e6ff" />
+  
+  <!-- Ears perked up for excitement -->
+  <path d="M80 45 Q70 5 85 10 Q85 0 95 10 L95 45 Z" fill="#f2e6ff" />
+  <path d="M120 45 Q130 5 115 10 Q115 0 105 10 L105 45 Z" fill="#f2e6ff" />
+  <path d="M85 20 Q85 5 95 15 L95 45 Z" fill="#ffccf2" />
+  <path d="M115 20 Q115 5 105 15 L105 45 Z" fill="#ffccf2" />
+  
+  <!-- Face -->
+  <!-- Wide, excited eyes -->
+  <circle cx="85" cy="65" r="7" fill="white" />
+  <circle cx="85" cy="65" r="3" fill="black" />
+  <circle cx="115" cy="65" r="7" fill="white" />
+  <circle cx="115" cy="65" r="3" fill="black" />
+  
+  <!-- Sparkles in eyes -->
+  <circle cx="84" cy="63" r="1" fill="white" />
+  <circle cx="114" cy="63" r="1" fill="white" />
+  
+  <!-- Nose -->
+  <ellipse cx="100" cy="78" rx="6" ry="4" fill="#ffb3e6" />
+  
+  <!-- Big smile -->
+  <path d="M85 85 Q100 100 115 85" fill="none" stroke="#000" stroke-width="2" />
+  
+  <!-- Whiskers vibrating with excitement -->
+  <path d="M80 78 Q65 76 65 78" stroke="#666" stroke-width="1" />
+  <path d="M80 82 Q65 85 65 83" stroke="#666" stroke-width="1" />
+  <path d="M120 78 Q135 76 135 78" stroke="#666" stroke-width="1" />
+  <path d="M120 82 Q135 85 135 83" stroke="#666" stroke-width="1" />
+  
+  <!-- Excitement marks -->
+  <text x="140" y="50" font-family="Arial" font-size="15" font-weight="bold">!</text>
+  <text x="60" y="50" font-family="Arial" font-size="15" font-weight="bold">!</text>
+  
+  <!-- Bouncing pose (front paws up) -->
+  <ellipse cx="75" cy="130" rx="10" ry="8" fill="#f2e6ff" />
+  <ellipse cx="125" cy="130" rx="10" ry="8" fill="#f2e6ff" />
+</svg>
