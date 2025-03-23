@@ -39,7 +39,6 @@ export function usePetLogic() {
   useEffect(() => {
     if (hunger <= 0 || energy <= 0 || fun <= 0) {
       setIsActive(false);
-      setMood(MOODS.exhausted);
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
@@ -50,7 +49,10 @@ export function usePetLogic() {
 
   // Update mood based on stats
   useEffect(() => {
-    if (!isActive) return;
+    if (!isActive) {
+      setMood(MOODS.exhausted);
+      return;
+    }
 
     if (energy <= 40) {
       setMood(MOODS.tired);
