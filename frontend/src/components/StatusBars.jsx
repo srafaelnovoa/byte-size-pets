@@ -1,7 +1,9 @@
-const StatusBar = ({ label, value }) => (
-  <div className="row">
+import { Button } from "react-bootstrap";
+
+const StatusBar = ({ label, value, isActive, action, actionValue }) => (
+  <div className="row m-1">
     <div className="col-4 d-flex justify-content-end">{label}:</div>
-    <div className="col-8 my-auto">
+    <div className="col-7 my-auto">
       <div className="progress">
         <div
           className="progress-bar"
@@ -15,14 +17,52 @@ const StatusBar = ({ label, value }) => (
         </div>
       </div>
     </div>
+    <div className="col-1">
+      {isActive ? (
+        <Button
+          className="btn btn-dark btn-sm mx-auto"
+          onClick={() => action(actionValue)}
+        >
+          +
+        </Button>
+      ) : (
+        <></>
+      )}
+    </div>
   </div>
 );
 
-const StatusBars = ({ hunger, fun, energy }) => (
+const StatusBars = ({
+  isActive,
+  hunger,
+  fun,
+  energy,
+  feedPet,
+  playWithPet,
+  restPet,
+}) => (
   <div className="row border border-dark mb-2">
-    <StatusBar label="Hunger" value={hunger} />
-    <StatusBar label="Fun" value={fun} />
-    <StatusBar label="Energy" value={energy} />
+    <StatusBar
+      label="Hunger"
+      value={hunger}
+      isActive={isActive}
+      action={feedPet}
+      actionValue={15}
+    />
+    <StatusBar
+      label="Fun"
+      value={fun}
+      isActive={isActive}
+      action={playWithPet}
+      actionValue={20}
+    />
+    <StatusBar
+      label="Energy"
+      value={energy}
+      isActive={isActive}
+      action={restPet}
+      actionValue={20}
+    />
   </div>
 );
 

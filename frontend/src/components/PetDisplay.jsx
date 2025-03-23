@@ -5,7 +5,7 @@ const PetDisplay = ({ mood }) => (
     <div className="d-flex justify-content-center align-items-center">
       <Image
         src={mood.img}
-        className="img-fluid bg-secondary"
+        className="bg-secondary"
         alt={mood.text}
         width="50%"
       />

@@ -4,7 +4,7 @@ import "./App.css";
 import PetDisplay from "./components/PetDisplay";
 import PetInfo from "./components/PetInfo";
 import StatusBars from "./components/StatusBars";
-import ActionButtons from "./components/ActionButtons";
+import ReviveButton from "./components/ActionButtons";
 import { usePetLogic } from "./hooks/usePetLogic";
 
 function App() {
@@ -24,20 +24,20 @@ function App() {
 
   return (
     <div className="container">
-      <div className="row">
-        <h1>Byte-Size Pets</h1>
-      </div>
+      <h1>Byte-Size Pets</h1>
 
       <PetDisplay mood={mood} />
       <PetInfo petName={petName} mood={mood} />
-      <StatusBars hunger={hunger} fun={fun} energy={energy} />
-      <ActionButtons
+      <StatusBars
         isActive={isActive}
+        hunger={hunger}
+        fun={fun}
+        energy={energy}
         feedPet={feedPet}
         playWithPet={playWithPet}
         restPet={restPet}
-        revivePet={revivePet}
       />
+      <ReviveButton isActive={isActive} revivePet={revivePet} />
     </div>
   );
 }
