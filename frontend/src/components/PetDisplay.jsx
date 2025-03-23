@@ -1,13 +1,13 @@
 import { Image } from "react-bootstrap";
 import PetStats from "./PetStats";
 
-const PetDisplay = ({ mood, timeAlive, timeBest, level }) => (
+const PetDisplay = ({ mood, highScore, level, score }) => (
   <div className="row border border-2 border-dark  mb-1">
     <div className="col-4 border-end border-dark">
       <Image src={mood.img} className="" alt={mood.text} />
     </div>
     <div className="col-8 my-auto">
-      <PetStats timeAlive={timeAlive} timeBest={timeBest} level={level} />
+      <PetStats highScore={highScore} level={level} score={score} />
     </div>
   </div>
 );

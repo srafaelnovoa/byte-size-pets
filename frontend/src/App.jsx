@@ -20,9 +20,9 @@ function App() {
     playWithPet,
     restPet,
     revivePet,
-    timeAlive,
-    timeBest,
+    highScore,
     level,
+    score,
   } = usePetLogic();
 
   return (
@@ -31,9 +31,9 @@ function App() {
 
       <PetDisplay
         mood={mood}
-        timeAlive={timeAlive}
-        timeBest={timeBest}
+        highScore={highScore}
         level={level}
+        score={score}
       />
       <PetInfo petName={petName} mood={mood} />
       <StatusBars

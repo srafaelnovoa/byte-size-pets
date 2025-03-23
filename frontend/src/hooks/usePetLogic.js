@@ -8,12 +8,12 @@ export function usePetLogic() {
   const [mood, setMood] = useState(MOODS.happy);
   const [isActive, setIsActive] = useState(true);
   const [timeAlive, setTimeAlive] = useState(0);
-  const [timeBest, setTimeBest] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState(1);
   const [timeValue, setTimeValue] = useState(1000);
+  const [score, setScore] = useState(0);
 
   const intervalRef = useRef(null);
-  let timeValueRef = useRef(1000);
 
   const feedPet = (amt) => {
     if (!isActive) return;
@@ -41,25 +41,25 @@ export function usePetLogic() {
     setTimeAlive(0);
     setLevel(1);
     setTimeValue(1000);
+    setScore(0);
   };
 
   // Check if pet is exhausted
   useEffect(() => {
+    if (!isActive) return;
     if (hunger <= 0 || energy <= 0 || fun <= 0) {
       setIsActive(false);
-      setTimeBest((prev) => (prev < timeAlive ? timeAlive : prev));
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
         console.log("Pet is exhausted!");
       }
     }
-  }, [hunger, energy, fun]);
+  }, [hunger, energy, fun, isActive]);
 
   // Update mood based on stats
   useEffect(() => {
     if (!isActive) {
-      setMood(MOODS.exhausted);
       return;
     }
 
@@ -78,25 +78,49 @@ export function usePetLogic() {
     }
   }, [hunger, fun, energy, isActive]);
 
+  // Set mood to exhausted and update high score when pet becomes inactive
   useEffect(() => {
-    if (timeAlive % 10 == 0 && timeAlive > 0) {
+    if (!isActive) {
+      setMood(MOODS.exhausted);
+      setHighScore((prev) => (prev < score ? score : prev));
+    }
+  }, [isActive]);
+
+  // Update high score when score changes while active
+  useEffect(() => {
+    if (isActive) {
+      setHighScore((prev) => (prev < score ? score : prev));
+    }
+  }, [score, isActive]);
+
+  // Increment level based on timeAlive
+  useEffect(() => {
+    if (isActive && timeAlive > 0 && timeAlive % 10 === 0) {
       console.log("timeAlive", timeAlive);
       setLevel((prev) => prev + 1);
     }
-  }, [timeAlive]);
+  }, [timeAlive, isActive]);
 
+  // Update score when level changes
   useEffect(() => {
-    setTimeValue((prev) => Math.trunc(prev * 0.8));
+    if (isActive && level) {
+      setScore((prev) => prev + (50 * level) / 2);
+    }
+  }, [level, isActive, timeAlive]);
+
+  // Update timeValue when level changes
+  useEffect(() => {
+    if (level > 1) {
+      setTimeValue((prev) => Math.trunc(prev * 0.8));
+    }
   }, [level]);
 
   // Setup interval for decreasing stats
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      if (!isActive) return;
+    if (!isActive) return;
 
-      setTimeAlive((prev) => {
-        return prev + 1;
-      });
+    intervalRef.current = setInterval(() => {
+      setTimeAlive((prev) => prev + 1);
 
       let amt = 10;
       let random = Math.floor(Math.random() * 3) + 1;
@@ -131,8 +155,9 @@ export function usePetLogic() {
     playWithPet,
     restPet,
     revivePet,
-    timeAlive,
-    timeBest,
+    highScore,
     level,
+    score,
+    timeAlive,
   };
 }
