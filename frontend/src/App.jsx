@@ -20,13 +20,21 @@ function App() {
     playWithPet,
     restPet,
     revivePet,
+    timeAlive,
+    timeBest,
+    level,
   } = usePetLogic();
 
   return (
     <div className="container">
-      <h1>Byte-Size Pets</h1>
+      <h1>Byte-Size Pets </h1>
 
-      <PetDisplay mood={mood} />
+      <PetDisplay
+        mood={mood}
+        timeAlive={timeAlive}
+        timeBest={timeBest}
+        level={level}
+      />
       <PetInfo petName={petName} mood={mood} />
       <StatusBars
         isActive={isActive}

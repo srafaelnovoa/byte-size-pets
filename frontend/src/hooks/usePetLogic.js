@@ -7,8 +7,13 @@ export function usePetLogic() {
   const [fun, setFun] = useState(60);
   const [mood, setMood] = useState(MOODS.happy);
   const [isActive, setIsActive] = useState(true);
+  const [timeAlive, setTimeAlive] = useState(0);
+  const [timeBest, setTimeBest] = useState(0);
+  const [level, setLevel] = useState(1);
+  const [timeValue, setTimeValue] = useState(1000);
 
   const intervalRef = useRef(null);
+  let timeValueRef = useRef(1000);
 
   const feedPet = (amt) => {
     if (!isActive) return;
@@ -33,12 +38,16 @@ export function usePetLogic() {
     setIsActive(true);
     setMood(MOODS.happy);
     console.log("Pet revived!");
+    setTimeAlive(0);
+    setLevel(1);
+    setTimeValue(1000);
   };
 
   // Check if pet is exhausted
   useEffect(() => {
     if (hunger <= 0 || energy <= 0 || fun <= 0) {
       setIsActive(false);
+      setTimeBest((prev) => (prev < timeAlive ? timeAlive : prev));
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
@@ -69,10 +78,25 @@ export function usePetLogic() {
     }
   }, [hunger, fun, energy, isActive]);
 
+  useEffect(() => {
+    if (timeAlive % 10 == 0 && timeAlive > 0) {
+      console.log("timeAlive", timeAlive);
+      setLevel((prev) => prev + 1);
+    }
+  }, [timeAlive]);
+
+  useEffect(() => {
+    setTimeValue((prev) => Math.trunc(prev * 0.8));
+  }, [level]);
+
   // Setup interval for decreasing stats
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       if (!isActive) return;
+
+      setTimeAlive((prev) => {
+        return prev + 1;
+      });
 
       let amt = 10;
       let random = Math.floor(Math.random() * 3) + 1;
@@ -85,17 +109,17 @@ export function usePetLogic() {
           setFun((prev) => Math.min(100, Math.max(0, prev - amt)));
           break;
         case 3:
-          setEnergy((prev) => Math.min(100, Math.max(0, prev - amt / 2)));
+          setEnergy((prev) => Math.min(100, Math.max(0, prev - amt * 0.5)));
           break;
       }
-    }, 1000);
+    }, timeValue);
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isActive]);
+  }, [isActive, timeValue]);
 
   return {
     hunger,
@@ -107,5 +131,8 @@ export function usePetLogic() {
     playWithPet,
     restPet,
     revivePet,
+    timeAlive,
+    timeBest,
+    level,
   };
 }
