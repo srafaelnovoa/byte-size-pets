@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-const StatusBar = ({ label, value, isActive, action, actionValue }) => (
+const StatusBar = ({ label, value, isActive, action }) => (
   <div className="row m-1">
     <div className="col-4 d-flex justify-content-end">{label}:</div>
     <div className="col-7 my-auto">
@@ -21,7 +21,7 @@ const StatusBar = ({ label, value, isActive, action, actionValue }) => (
       {isActive ? (
         <Button
           className="btn btn-dark btn-sm mx-auto"
-          onClick={() => action(actionValue)}
+          onClick={() => action()}
         >
           +
         </Button>
@@ -47,21 +47,18 @@ const StatusBars = ({
       value={hunger}
       isActive={isActive}
       action={feedPet}
-      actionValue={15}
     />
     <StatusBar
       label="Fun"
       value={fun}
       isActive={isActive}
       action={playWithPet}
-      actionValue={20}
     />
     <StatusBar
       label="Energy"
       value={energy}
       isActive={isActive}
       action={restPet}
-      actionValue={20}
     />
   </div>
 );

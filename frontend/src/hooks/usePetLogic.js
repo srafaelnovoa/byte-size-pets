@@ -1,46 +1,50 @@
 import { useState, useEffect, useRef } from "react";
 import { MOODS } from "../constants";
+import { SETTINGS } from "../constants";
 
 export function usePetLogic() {
-  const [hunger, setHunger] = useState(60);
-  const [energy, setEnergy] = useState(60);
-  const [fun, setFun] = useState(60);
+  const [hunger, setHunger] = useState(SETTINGS.hunger.start);
+  const [energy, setEnergy] = useState(SETTINGS.energy.start);
+  const [fun, setFun] = useState(SETTINGS.fun.start);
   const [mood, setMood] = useState(MOODS.happy);
   const [isActive, setIsActive] = useState(true);
   const [timeAlive, setTimeAlive] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState(1);
-  const [timeValue, setTimeValue] = useState(1000);
+  const [timeValue, setTimeValue] = useState(SETTINGS.timeIntervalStart.medium);
   const [score, setScore] = useState(0);
 
   const intervalRef = useRef(null);
 
-  const feedPet = (amt) => {
+  const feedPet = () => {
+    const amt = SETTINGS.hunger.add;
     if (!isActive) return;
     setHunger((prev) => Math.min(100, Math.max(0, prev + amt)));
   };
 
-  const playWithPet = (amt) => {
+  const playWithPet = () => {
+    const amt = SETTINGS.fun.add;
     if (!isActive) return;
     setFun((prev) => Math.min(100, Math.max(0, prev + amt)));
     setEnergy((prev) => Math.min(100, Math.max(0, prev - amt / 2)));
   };
 
-  const restPet = (amt) => {
+  const restPet = () => {
+    const amt = SETTINGS.energy.add;
     if (!isActive) return;
     setEnergy((prev) => Math.min(100, Math.max(0, prev + amt)));
   };
 
   const revivePet = () => {
-    setHunger(60);
-    setEnergy(60);
-    setFun(60);
+    setHunger(SETTINGS.hunger.start);
+    setEnergy(SETTINGS.energy.start);
+    setFun(SETTINGS.fun.start);
     setIsActive(true);
     setMood(MOODS.happy);
     console.log("Pet revived!");
     setTimeAlive(0);
     setLevel(1);
-    setTimeValue(1000);
+    setTimeValue(SETTINGS.timeIntervalStart.medium);
     setScore(0);
   };
 
