@@ -1,4 +1,3 @@
-// File: src/components/StatusBars.jsx
 const StatusBar = ({ label, value }) => (
   <div className="row">
     <div className="col-4 d-flex justify-content-end">{label}:</div>

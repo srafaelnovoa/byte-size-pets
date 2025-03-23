@@ -1,4 +1,3 @@
-// File: src/hooks/usePetLogic.js
 import { useState, useEffect, useRef } from "react";
 import { MOODS } from "../constants";
 
