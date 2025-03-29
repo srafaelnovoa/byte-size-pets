@@ -7,7 +7,7 @@ export function usePetLogic() {
   const [energy, setEnergy] = useState(SETTINGS.energy.start);
   const [fun, setFun] = useState(SETTINGS.fun.start);
   const [mood, setMood] = useState(MOODS.happy);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const [timeAlive, setTimeAlive] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState(1);
@@ -85,9 +85,11 @@ export function usePetLogic() {
   // Set mood to exhausted and update high score when pet becomes inactive
   useEffect(() => {
     if (!isActive) {
+      if (score === 0) return;
       setMood(MOODS.exhausted);
       setHighScore((prev) => (prev < score ? score : prev));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 
   // Update high score when score changes while active

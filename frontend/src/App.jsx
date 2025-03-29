@@ -45,7 +45,7 @@ function App() {
         playWithPet={playWithPet}
         restPet={restPet}
       />
-      <ReviveButton isActive={isActive} revivePet={revivePet} />
+      <ReviveButton isActive={isActive} score={score} revivePet={revivePet} />
     </div>
   );
 }

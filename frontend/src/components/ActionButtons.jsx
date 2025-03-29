@@ -1,10 +1,14 @@
 import { Button } from "react-bootstrap";
 
-const ReviveButton = ({ isActive, revivePet }) => (
+const ReviveButton = ({ isActive, score, revivePet }) => (
   <div className="row m-1">
     <div className="">
       {isActive ? (
         <></>
+      ) : score == 0 ? (
+        <Button className="btn btn-primary m-2" onClick={revivePet}>
+          Start
+        </Button>
       ) : (
         <Button className="btn btn-danger m-2" onClick={revivePet}>
           Revive Pet
