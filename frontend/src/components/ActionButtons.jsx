@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 
 const ReviveButton = ({ isActive, score, revivePet }) => (
   <div className="row m-1">
-    <div className="">
+    <div className="text-center">
       {isActive ? (
         <></>
       ) : score == 0 ? (

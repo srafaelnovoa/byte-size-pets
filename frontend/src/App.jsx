@@ -26,8 +26,8 @@ function App() {
   } = usePetLogic();
 
   return (
-    <div className="container">
-      <h1>Byte-Size Pets </h1>
+    <div className="container p-1">
+      <h1 className="text-center">Byte-Size Pets </h1>
 
       <PetDisplay
         mood={mood}

@@ -1,9 +1,9 @@
 import { Button } from "react-bootstrap";
 
 const StatusBar = ({ label, value, isActive, action }) => (
-  <div className="row m-1">
+  <div className="row mb-1">
     <div className="col-4 d-flex justify-content-end">{label}:</div>
-    <div className="col-7 my-auto">
+    <div className="col-7 mt-2">
       <div className="progress">
         <div
           className="progress-bar"
@@ -17,12 +17,9 @@ const StatusBar = ({ label, value, isActive, action }) => (
         </div>
       </div>
     </div>
-    <div className="col-1">
+    <div className="col-1 mt-1">
       {isActive ? (
-        <Button
-          className="btn btn-dark btn-sm mx-auto"
-          onClick={() => action()}
-        >
+        <Button className="btn btn-dark btn-sm mx-1 " onClick={() => action()}>
           +
         </Button>
       ) : (
