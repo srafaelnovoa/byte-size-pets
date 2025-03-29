@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Bunny body -->
+  <ellipse cx="100" cy="110" rx="40" ry="35" fill="#f2e6ff" />
+  
+  <!-- Bunny head -->
+  <circle cx="100" cy="70" r="35" fill="#f2e6ff" />
+  
+  <!-- Ears -->
+  <path d="M80 45 Q70 15 85 25 Q85 10 95 20 L95 45 Z" fill="#f2e6ff" />
+  <path d="M120 45 Q130 15 115 25 Q115 10 105 20 L105 45 Z" fill="#f2e6ff" />
+  <path d="M85 30 Q85 15 95 25 L95 45 Z" fill="#ffccf2" />
+  <path d="M115 30 Q115 15 105 25 L105 45 Z" fill="#ffccf2" />
+  
+  <!-- Face -->
+  <!-- Happy eyes (curved upward) -->
+  <path d="M80 65 Q85 60 90 65" fill="none" stroke="#000" stroke-width="2" />
+  <path d="M110 65 Q115 60 120 65" fill="none" stroke="#000" stroke-width="2" />
+  
+  <!-- Nose -->
+  <ellipse cx="100" cy="78" rx="6" ry="4" fill="#ffb3e6" />
+  
+  <!-- Big smile -->
+  <path d="M85 85 Q100 95 115 85" fill="none" stroke="#000" stroke-width="2" />
+  
+  <!-- Rosy cheeks -->
+  <circle cx="80" cy="80" r="5" fill="#ffb3b3" opacity="0.5" />
+  <circle cx="120" cy="80" r="5" fill="#ffb3b3" opacity="0.5" />
+  
+  <!-- Whiskers -->
+  <line x1="80" y1="80" x2="65" y2="78" stroke="#666" stroke-width="1" />
+  <line x1="80" y1="82" x2="65" y2="83" stroke="#666" stroke-width="1" />
+  <line x1="120" y1="80" x2="135" y2="78" stroke="#666" stroke-width="1" />
+  <line x1="120" y1="82" x2="135" y2="83" stroke="#666" stroke-width="1" />
+  
+  <!-- Happy bubble -->
+  <circle cx="140" cy="40" r="10" fill="white" stroke="#ccc" />
+  <path d="M130 45 L125 55" stroke="#ccc" />
+  <text x="135" y="44" font-family="Arial" font-size="15" font-weight="bold">♥</text>
+</svg>
