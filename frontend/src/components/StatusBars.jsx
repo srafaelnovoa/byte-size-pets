@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 
 const StatusBar = ({ label, value, isActive, action }) => (
   <div className="row mb-1">
-    <div className="col-4 d-flex justify-content-end">{label}:</div>
+    <div className="col-4 d-flex justify-content-end p-0">{label}:</div>
     <div className="col-7 mt-2">
       <div className="progress">
         <div
@@ -17,7 +17,7 @@ const StatusBar = ({ label, value, isActive, action }) => (
         </div>
       </div>
     </div>
-    <div className="col-1 mt-1">
+    <div className="col-1 mt-1 p-0">
       {isActive ? (
         <Button className="btn btn-dark btn-sm mx-1 " onClick={() => action()}>
           +
